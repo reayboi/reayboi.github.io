@@ -6,7 +6,7 @@
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
   color: white;
-  background-image: url('./assets/background.png');
+  background-image: url('/images/background.png');
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
