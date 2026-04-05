@@ -1,4 +1,3 @@
-import './App.css'
 import { Feed } from './components/feed/feed';
 import { Header } from './components/header/header';
 
