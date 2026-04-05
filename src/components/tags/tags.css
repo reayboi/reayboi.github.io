@@ -1,0 +1,7 @@
+.tags {
+    padding-top: 8px;
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+    margin-top: 10px;
+}
