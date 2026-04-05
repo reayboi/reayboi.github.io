@@ -1,5 +1,5 @@
 import { Avatar } from '../avatar/avatar';
-import { Card } from '../Card/card';
+import { Card } from '../card/card';
 import { Tags } from '../tags/tags';
 import { Timestamp } from '../timestamp/timestamp';
 import './post.css';
