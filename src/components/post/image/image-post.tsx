@@ -4,9 +4,11 @@ import type { PostProps } from '../post';
 import { Tags } from '../../tags/tags';
 import { Timestamp } from '../../timestamp/timestamp';
 import './image-post.css';
+import type { ContentfulImage } from '../../../types/types';
+import { useState } from 'react';
 
 export interface ImagePostProps extends PostProps {
-    images: Array<string>
+    images: Array<ContentfulImage>
 }
 
 //TO-DO: Image viewer
@@ -15,6 +17,7 @@ const zoomImage = () => {
 }
 
 export const ImagePost = ({ title, body, date, tags, images }: ImagePostProps) => {
+    const [imgs, _setImgs] = useState<Array<ContentfulImage> | null>(images ?? null);
     return (
         <Card>
             <div className="heading">
@@ -23,9 +26,9 @@ export const ImagePost = ({ title, body, date, tags, images }: ImagePostProps) =
             </div>
             <div className='content'>
                 <div className='image-container'>
-                    <img className='image' src={`/images/${images[0]}`} alt={body} onClick={() => zoomImage}/>
+                    {imgs && imgs.length > 0 && <img className='image' src={imgs[0].fields.file.url} alt='fsadasd' onClick={() => zoomImage}/>}
                 </div>
-                <p className='body'>{body}</p>
+                {body}
                 <Tags tags={tags} />
                 <Timestamp date={date} />
             </div>

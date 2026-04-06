@@ -1,6 +1,6 @@
-import { createContext, type ReactNode, useContext, useState } from 'react';
+import { createContext, type ReactNode, useContext, useEffect, useState } from 'react';
 import type { Post } from '../types/types';
-import { data } from '../content/data';
+import { getPosts } from '../api/contentful';
 
 
 type PostsContextType = {
@@ -11,7 +11,11 @@ type PostsContextType = {
 const PostsContext = createContext<PostsContextType | undefined>(undefined);
 
 export const PostsProvider = ({ children }: { children: ReactNode }) => {
-  const [posts, setPosts] = useState<Array<Post>>(data);
+  const [posts, setPosts] = useState<Array<Post>>([]);
+  
+  useEffect(() => {
+    getPosts().then( posts => setPosts(posts))
+  }, [])
 
   return (
     <PostsContext.Provider

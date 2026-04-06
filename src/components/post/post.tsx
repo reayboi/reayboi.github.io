@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import { Avatar } from '../avatar/avatar';
 import { Card } from '../card/card';
 import { Tags } from '../tags/tags';
@@ -6,7 +7,7 @@ import './post.css';
 
 export interface PostProps {
     title: string;
-    body: string;
+    body: string | ReactNode;
     date: Date;
     tags: Array<string>;
 }
@@ -19,7 +20,7 @@ export const Post = ({ title, body, date, tags }: PostProps) => {
                 <h4>{title}</h4>
             </div>
             <div className='content'>
-                <p className='body'>{body}</p>
+                {body}
                 <Tags tags={tags} />
                 <Timestamp date={date} />
             </div>

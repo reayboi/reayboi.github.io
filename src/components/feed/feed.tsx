@@ -25,18 +25,23 @@ export const Feed = () => {
     const { posts, setPosts } = usePosts()
     const postsCopy = useRef(posts)
 
-    console.log('post updated in feed')
-
     useEffect(() => {
-        if (filterRef.current !== filters.length) {
+        if (filterRef.current !== filters.length && postsCopy.current.length > 0) {
             const filteredPosts = filterPosts(postsCopy.current, filters);
             setPosts(filteredPosts);
             filterRef.current = filters.length;
-        } else if (filters.length === 0) {
+        } else if (filters.length === 0 && postsCopy.current.length > 0) {
             setPosts(postsCopy.current);
         }
     }, [posts, setPosts, filters])
     
+
+    useEffect(() => {
+        if (postsCopy.current.length === 0 && posts.length > 0) {
+            postsCopy.current = posts;
+        }
+    }, [posts])
+
     return (
         <div className='feed'>
             {/* <h2 className='feed-heading'>All Posts  </h2> */}
