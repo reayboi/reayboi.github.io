@@ -1,8 +1,15 @@
 .feed {
     width: 100%;
-    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
     gap: 40px;
+    padding-top: 10px;
+    padding-bottom: 40px;
 }
-.feed-post {
-    margin-top: 20px;
+
+.feed-heading {
+    /* text-align: left;
+    justify-content: left; */
+    margin: 0;
+    /* padding-left: 20px; */
 }

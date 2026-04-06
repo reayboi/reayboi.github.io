@@ -5,6 +5,7 @@
     font-style: italic;
     border-radius: 8px;
     padding: 3px 9px;
+    height: 25px;
 }
 
 .tag:hover {

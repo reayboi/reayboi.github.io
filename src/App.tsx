@@ -1,10 +1,19 @@
+import './App.css'
 import { Feed } from './components/feed/feed';
+// import { Sort } from './components/sort/sort';
+import { Filters } from './components/filters/filters';
 import { Header } from './components/header/header';
+import { useFilters } from './context/filters-context';
 
 function App() {
+  const { filters } = useFilters();
   return (
     <main>
-      <Header /> 
+      <Header />
+      <div className='refine'>
+        {/* currently not working <Sort /> */}
+        {filters.length >= 1 && <Filters />}
+      </div>
       <Feed />
     </main>
   )

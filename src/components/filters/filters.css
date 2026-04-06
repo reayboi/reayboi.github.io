@@ -1,0 +1,10 @@
+.filters {
+    height: 30px;
+    width: fit-content;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+    overflow-x: scroll;
+}

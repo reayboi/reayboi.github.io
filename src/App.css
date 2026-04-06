@@ -1,0 +1,9 @@
+.refine {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    /* h/eight: 30px; */
+    gap: 8px;
+    padding: 10px 0;
+}
