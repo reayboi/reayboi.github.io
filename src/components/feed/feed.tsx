@@ -4,6 +4,7 @@ import { useFilters } from '../../context/filters-context';
 import { useEffect, useRef } from 'react';
 import { usePosts } from '../../context/posts-context';
 import type { Post as PostType } from "../../types/types"
+import { ImagePost } from '../post/image/image-post';
 
 export const filterPosts = (posts: Array<PostType>, filters: Array<string>): Array<PostType> => {
     if (filters.length < 1) {
@@ -39,7 +40,7 @@ export const Feed = () => {
     return (
         <div className='feed'>
             {/* <h2 className='feed-heading'>All Posts  </h2> */}
-            {posts.map((post) => <Post key={post.title} title={post.title} body={post.body} date={post.date} tags={post.tags} />)}
+            {posts.map((post) => post?.type === 'image' ? <ImagePost key={post.title} title={post.title} body={post.body} date={post.date} tags={post.tags} images={post.images!} /> : <Post key={post.title} title={post.title} body={post.body} date={post.date} tags={post.tags} />)}
         </div>
     );
 }
