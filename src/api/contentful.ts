@@ -1,12 +1,13 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import client from "../contenful";
 import type { Post } from "../types/types";
+import { sortByDateAscending } from "../utils/sort";
 
 export const fetchPosts = async (pageLimit: number = 10) => await client.getEntriesWithCursor({ limit: pageLimit }).then((data) => { return data }).catch((error) => console.error(error));
 
 export const getPosts = async (): Promise<Array<Post>> => {
     const response = await fetchPosts().then((data) => { return data?.items });
-    const posts = await response?.map((post: any) => {
+    const posts: Array<Post> | undefined = await response?.map((post: any) => {
         const { title, body, date, tags, type, images } = post.fields;
         return {
             title,
@@ -15,7 +16,8 @@ export const getPosts = async (): Promise<Array<Post>> => {
             tags,
             images,
             type
-        }
+        } as Post
     })
-    return posts || [];
+    const orderedPosts = sortByDateAscending(posts);
+    return orderedPosts || [];
 }
