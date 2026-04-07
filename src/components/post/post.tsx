@@ -16,7 +16,7 @@ export const Post = ({ title, body, date, tags }: PostProps) => {
     return (
         <Card>
             <div className="heading">
-                <Avatar />
+                <Avatar key={title} />
                 <h4>{title}</h4>
             </div>
             <div className='content'>
