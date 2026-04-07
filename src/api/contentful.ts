@@ -13,7 +13,7 @@ export const getPosts = async (): Promise<Array<Post>> => {
             title,
             body: typeof body === 'string' ? body: documentToReactComponents(body),
             date: new Date(date),
-            tags,
+            tags: tags.map((tag: string) => String(tag).toLocaleLowerCase()),
             images,
             type
         } as Post
