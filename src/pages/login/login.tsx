@@ -1,11 +1,33 @@
 import "./login.css";
 import { Card } from "../../components/card/card";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { app } from "../../firebase";
+import { isAdmin } from "../../api/auth";
+import { useAuth } from "../../context/auth-context";
+import { useNavigate } from "react-router";
 
 export const Login = () => {
+    const { setAdminAuthenticated } = useAuth();
+    const navigate = useNavigate();
 
     const login = (e: any) => {
-            e.preventDefault();
-        console.log(e)
+        e.preventDefault();
+        const email = e.target.elements.username.value;
+        const password = e.target.elements.password.value;        
+        const auth = getAuth(app);
+        signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            const email = userCredential.user.email;
+            if (email && isAdmin(email)) {
+                setAdminAuthenticated(true);
+                navigate('/')
+            }
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.error(errorCode, errorMessage)
+        });
     }
 
     return (
