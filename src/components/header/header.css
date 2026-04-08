@@ -9,13 +9,16 @@
 
 
 .disclaimer {
-    @media (max-width: 600px) {
-        display: none;
-    }
-
     font-size: 0.7rem;
     background-color: rgba(0, 0, 0, 0.231);
     color: rgba(255, 255, 255, 0.911);
     line-height: 0.8rem;
-    padding: 4px 0;
+    padding: 4px;
+
+    a {
+         color: rgba(255, 255, 255, 0.911);
+        &:hover {
+            cursor: pointer;
+        }
+    }
 }
