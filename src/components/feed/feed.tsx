@@ -5,6 +5,7 @@ import type { Post as PostType } from '../../types/types'
 import { ImagePost } from '../post/image/image-post'
 import { useFilters } from '../../state/hooks/use-filters'
 import { usePosts } from '../../state/hooks/use-posts'
+import { Loading } from '../loading/loading'
 
 const filterPosts = (
   posts: Array<PostType>,
@@ -49,9 +50,11 @@ export const Feed = () => {
   return (
     <div className="feed">
       {loading ? (
-        <>loading</>
+        <div className="feed-loading">
+          <Loading />
+        </div>
       ) : (
-        <>
+        <div>
           {posts.map((post) =>
             post?.type === 'image' ? (
               <ImagePost
@@ -72,7 +75,7 @@ export const Feed = () => {
               />
             ),
           )}
-        </>
+        </div>
       )}
     </div>
   )
