@@ -2,9 +2,7 @@ import { createClient } from 'contentful-management'
 
 export const managementClient = createClient(
   {
-    accessToken:
-      import.meta.env.VITE_CONTENTFUL_MANAGEMENT_API_PERSONAL_ACCESS_TOKEN ??
-      '',
+    accessToken: import.meta.env.VITE_CONTENTFUL_MANAGEMENT_TOKEN ?? '',
   },
   { type: 'legacy' },
 )
