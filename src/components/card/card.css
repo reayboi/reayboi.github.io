@@ -11,3 +11,10 @@
   text-align: left;
   color: black;
 }
+
+.create {
+  background-color: rgb(235, 214, 175);
+  border: 2px dashed rgba(105, 86, 212, 0.541);
+  padding: 10px 10px;
+  min-height: 75px;
+}

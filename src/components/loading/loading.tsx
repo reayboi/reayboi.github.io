@@ -1,5 +1,3 @@
 import './loading.css'
 
-export const Loading = () => (
-    <div className="loading"></div>
-)
+export const Loading = () => <div className="loading"></div>

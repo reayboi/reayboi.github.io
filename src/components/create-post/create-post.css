@@ -1,0 +1,47 @@
+.create-post {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.create-post-container {
+  width: 100%;
+}
+
+.input {
+  background-color: rgb(235, 214, 175);
+  border: none;
+  width: 100%;
+  font-weight: 700;
+}
+
+.input:focus {
+  outline: none;
+  border: none;
+}
+
+.heading {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.create-button {
+  border-radius: 50%;
+  font-weight: 900;
+  font-size: large;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  justify-content: center;
+  vertical-align: text-top;
+  background-color: #efe4cf;
+  border: none;
+  cursor: pointer;
+}

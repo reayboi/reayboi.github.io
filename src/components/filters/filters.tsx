@@ -7,7 +7,7 @@ export const Filters = () => {
   const { filters, setFilters } = useFilters()
   return (
     <div className="filters">
-      {filters.length >= 1 && <span>filtering: </span>}
+      {/* {filters.length >= 1 && <span>#/ </span>} */}
       {filters.map((filter, index) => (
         <Tag
           key={`${index}-${filter}`}

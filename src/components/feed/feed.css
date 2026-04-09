@@ -7,6 +7,12 @@
   padding-bottom: 40px;
 }
 
+.feed-posts {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
 .feed-heading {
   margin: 0;
 }

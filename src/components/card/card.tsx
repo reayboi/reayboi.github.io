@@ -3,9 +3,14 @@ import './card.css'
 
 interface CardProps {
   children: ReactNode
+  variant?: 'default' | 'create'
   className?: string
 }
 
-export const Card = ({ children, className = '' }: CardProps) => {
-  return <div className={`card ${className}`}>{children}</div>
+export const Card = ({
+  children,
+  variant = 'default',
+  className = '',
+}: CardProps) => {
+  return <div className={`card ${className} ${variant}`}>{children}</div>
 }

@@ -54,7 +54,7 @@ export const Feed = () => {
           <Loading />
         </div>
       ) : (
-        <div>
+        <div className="feed-posts">
           {posts.map((post) =>
             post?.type === 'image' ? (
               <ImagePost

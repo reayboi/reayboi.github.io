@@ -1,0 +1,11 @@
+.input {
+  background-color: rgb(235, 214, 175);
+  border: none;
+}
+
+.tags {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  margin-top: 0 !important;
+}

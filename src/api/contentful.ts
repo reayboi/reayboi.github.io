@@ -2,6 +2,7 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import client from '../contenful'
 import type { Post } from '../types/types'
 import { sortByDateAscending } from '../utils/sort'
+import managementClient from '../contentful-management'
 
 export const fetchPosts = async (pageLimit: number = 10) =>
   await client
@@ -28,4 +29,55 @@ export const getPosts = async (): Promise<Array<Post>> => {
   })
   const orderedPosts = sortByDateAscending(posts)
   return orderedPosts || []
+}
+
+export const createPost = async (
+  title: string,
+  body: string,
+  tags: Array<string>,
+  type: 'text' | 'image' = 'text',
+) => {
+  managementClient
+    .getSpace(import.meta.env.VITE_CONTENTFUL_SPACE_ID)
+    .then((space) => space.getEnvironment('master'))
+    .then((environment) =>
+      environment.createEntry('post', {
+        fields: {
+          title: {
+            'en-US': title,
+          },
+          date: {
+            'en-US': new Date(),
+          },
+          body: {
+            'en-US': {
+              nodeType: 'document',
+              data: {},
+              content: [
+                {
+                  nodeType: 'paragraph',
+                  data: {},
+                  content: [
+                    {
+                      nodeType: 'text',
+                      value: body,
+                      marks: [],
+                      data: {},
+                    },
+                  ],
+                },
+              ],
+            },
+          },
+          tags: {
+            'en-US': tags,
+          },
+          type: {
+            'en-US': type,
+          },
+        },
+      }),
+    )
+    .then((entry) => entry.publish())
+    .catch(console.error)
 }

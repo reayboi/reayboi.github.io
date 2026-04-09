@@ -4,5 +4,8 @@
   justify-content: space-evenly;
   width: 100%;
   gap: 8px;
-  padding: 10px 0;
+}
+
+.content {
+  padding-top: 20px;
 }

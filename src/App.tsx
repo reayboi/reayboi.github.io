@@ -1,4 +1,5 @@
 import './App.css'
+import { CreatePost } from './components/create-post/create-post'
 import { Feed } from './components/feed/feed'
 import { Filters } from './components/filters/filters'
 import { Header } from './components/header/header'
@@ -12,12 +13,11 @@ function App() {
   return (
     <main>
       <Header />
-      <div className="refine">
-        {/* currently not working <Sort /> */}
-        {filters.length >= 1 && <Filters />}
+      <div className="content">
+        {!adminAuthenticated && <CreatePost />}
+        <div className="refine">{filters.length >= 1 && <Filters />}</div>
+        <Feed />
       </div>
-      {adminAuthenticated && <h3>Hello World</h3>}
-      <Feed />
     </main>
   )
 }

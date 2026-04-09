@@ -4,6 +4,7 @@ import bean from '../../assets/bean.png'
 
 export const Avatar = () => {
   const images = [frog, bean]
+  // eslint-disable-next-line react-hooks/purity
   const randomIndex = Math.floor(Math.random() * images.length)
   const image = images[randomIndex]
 
