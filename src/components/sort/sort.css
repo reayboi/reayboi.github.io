@@ -1,10 +1,10 @@
 .sort {
-    display: flex;
-    flex-direction: row;
-    gap: 4px;
-    padding-top:10px;
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  padding-top: 10px;
 }
 
 .active {
-    font-weight: 600;
+  font-weight: 600;
 }

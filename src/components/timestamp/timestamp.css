@@ -1,10 +1,10 @@
 .timestamp {
-    font-family: monospace;
-    font-size: 0.7rem;
-    display: block;
-    text-align: right;
+  font-family: monospace;
+  font-size: 0.7rem;
+  display: block;
+  text-align: right;
 
-    @media (max-width: 600px) {
-        margin-top: 10px;
-    }
+  @media (max-width: 600px) {
+    margin-top: 10px;
+  }
 }

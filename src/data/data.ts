@@ -1,6 +1,6 @@
 // import type { Post } from "../types/types";
 
-// export const data: Array<Post> = 
+// export const data: Array<Post> =
 // [
 //     {
 //         "title": "Ballarat Botanical Garden",
@@ -9,7 +9,7 @@
 //         "images": ["ballarat-botantical-garden.jpg"],
 //         "date": new Date("April 6, 2026 12:29:00"),
 //         "tags": ["photography", "flora", "ballarat"],
-        
+
 //     },
 //     {
 //         "title": "quality of life improvements",

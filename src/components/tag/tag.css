@@ -1,14 +1,14 @@
 .tag {
-    background-color: rgba(224, 201, 166, 0.493);
-    color: black;
-    border: none;
-    font-style: italic;
-    border-radius: 8px;
-    padding: 3px 9px;
-    height: 25px;
+  background-color: rgba(224, 201, 166, 0.493);
+  color: black;
+  border: none;
+  font-style: italic;
+  border-radius: 8px;
+  padding: 3px 9px;
+  height: 25px;
 }
 
 .tag:hover {
-    text-decoration: underline;
-    cursor: pointer;
+  text-decoration: underline;
+  cursor: pointer;
 }

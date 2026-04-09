@@ -1,51 +1,79 @@
-import './feed.css';
-import { Post } from "../post/post";
-import { useFilters } from '../../context/filters-context';
-import { useEffect, useRef } from 'react';
-import { usePosts } from '../../context/posts-context';
-import type { Post as PostType } from "../../types/types"
-import { ImagePost } from '../post/image/image-post';
+import './feed.css'
+import { Post } from '../post/post'
+import { useEffect, useRef } from 'react'
+import type { Post as PostType } from '../../types/types'
+import { ImagePost } from '../post/image/image-post'
+import { useFilters } from '../../state/hooks/use-filters'
+import { usePosts } from '../../state/hooks/use-posts'
 
-export const filterPosts = (posts: Array<PostType>, filters: Array<string>): Array<PostType> => {
-    if (filters.length < 1) {
-        return posts;
+const filterPosts = (
+  posts: Array<PostType>,
+  filters: Array<string>,
+): Array<PostType> => {
+  if (filters.length < 1) {
+    return posts
+  }
+  const filteredPosts = posts.filter((post) => {
+    if (post.tags.some((tag) => filters.includes(tag))) {
+      return post
     }
-     const filteredPosts = posts.filter((post) => {
-        if(post.tags.some((tag) => filters.includes(tag))) {
-            return post;
-        }
-    })
-    return filteredPosts;
+  })
+  return filteredPosts
 }
 
 export const Feed = () => {
-    const { filters } = useFilters();
-    const filterRef = useRef(filters.length);
-    
-    const { posts, setPosts } = usePosts()
-    const postsCopy = useRef(posts)
+  const { filters } = useFilters()
+  const filterRef = useRef(filters.length)
 
-    useEffect(() => {
-        if (filterRef.current !== filters.length && postsCopy.current.length > 0) {
-            const filteredPosts = filterPosts(postsCopy.current, filters);
-            setPosts(filteredPosts);
-            filterRef.current = filters.length;
-        } else if (filters.length === 0 && postsCopy.current.length > 0) {
-            setPosts(postsCopy.current);
-        }
-    }, [posts, setPosts, filters])
-    
+  const { posts, setPosts } = usePosts()
+  const postsCopy = useRef(posts)
 
-    useEffect(() => {
-        if (postsCopy.current.length === 0 && posts.length > 0) {
-            postsCopy.current = posts;
-        }
-    }, [posts])
+  const loading: boolean = posts.length === 0
 
-    return (
-        <div className='feed'>
-            {/* <h2 className='feed-heading'>All Posts  </h2> */}
-            {posts.map((post) => post?.type === 'image' ? <ImagePost key={post.title} title={post.title} body={post.body} date={post.date} tags={post.tags} images={post.images!} /> : <Post key={post.title} title={post.title} body={post.body} date={post.date} tags={post.tags} />)}
-        </div>
-    );
+  useEffect(() => {
+    if (filterRef.current !== filters.length && postsCopy.current.length > 0) {
+      const filteredPosts = filterPosts(postsCopy.current, filters)
+      setPosts(filteredPosts)
+      filterRef.current = filters.length
+    } else if (filters.length === 0 && postsCopy.current.length > 0) {
+      setPosts(postsCopy.current)
+    }
+  }, [posts, setPosts, filters])
+
+  useEffect(() => {
+    if (postsCopy.current.length === 0 && posts.length > 0) {
+      postsCopy.current = posts
+    }
+  }, [posts])
+
+  return (
+    <div className="feed">
+      {loading ? (
+        <>loading</>
+      ) : (
+        <>
+          {posts.map((post) =>
+            post?.type === 'image' ? (
+              <ImagePost
+                key={post.title}
+                title={post.title}
+                body={post.body}
+                date={post.date}
+                tags={post.tags}
+                images={post.images!}
+              />
+            ) : (
+              <Post
+                key={post.title}
+                title={post.title}
+                body={post.body}
+                date={post.date}
+                tags={post.tags}
+              />
+            ),
+          )}
+        </>
+      )}
+    </div>
+  )
 }

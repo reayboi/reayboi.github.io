@@ -1,15 +1,15 @@
 .feed {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    padding-top: 10px;
-    padding-bottom: 40px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding-top: 10px;
+  padding-bottom: 40px;
 }
 
 .feed-heading {
-    /* text-align: left;
+  /* text-align: left;
     justify-content: left; */
-    margin: 0;
-    /* padding-left: 20px; */
+  margin: 0;
+  /* padding-left: 20px; */
 }
