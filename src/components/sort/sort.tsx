@@ -1,8 +1,8 @@
 import './sort.css'
-import { usePosts } from '../../state-context/context/posts-context'
 import type { Post, SortBy } from '../../types/types'
 import { sortByDateAscending, sortByDateDescending } from '../../utils/sort'
 import { useEffect, useState } from 'react'
+import { usePosts } from '../../state/hooks/use-posts'
 
 const sortBy = (type: 'oldest' | 'newest', posts: Array<Post>) => {
   let sorted: Array<Post> = []
