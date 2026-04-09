@@ -14,7 +14,7 @@ function App() {
     <main>
       <Header />
       <div className="content">
-        {!adminAuthenticated && <CreatePost />}
+        {adminAuthenticated && <CreatePost />}
         <div className="refine">{filters.length >= 1 && <Filters />}</div>
         <Feed />
       </div>
