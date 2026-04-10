@@ -19,6 +19,7 @@ export const Login = () => {
       .then((userCredential) => {
         const email = userCredential.user.email
         if (email && isAdmin(email)) {
+          localStorage.setItem('adminLoggedIn', 'true')
           setAdminAuthenticated(true)
           navigate('/')
         }

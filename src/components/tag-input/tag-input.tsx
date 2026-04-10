@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import './tag-input.css'
 import { Tag } from '../tag/tag'
 
@@ -22,10 +22,6 @@ export const TagInput = ({ tags, setTags }: TagInputProps) => {
       }
     }
   }
-
-  useEffect(() => {
-    console.log(tags)
-  }, [tags])
 
   const tagColors: Array<string> = ['#64a7b8', '#7666eb']
 

@@ -4,15 +4,22 @@ import { TextArea } from '../text-area/text-area'
 import { TagInput } from '../tag-input/tag-input'
 import { useState } from 'react'
 import { createPost } from '../../api/contentful'
+import type { Entry } from 'contentful-management'
 
 export const CreatePost = () => {
   const [tags, setTags] = useState<Array<string>>([])
 
-  const create = (e: any) => {
+  const create = async (e: any) => {
     e.preventDefault()
-    const title = e.target.elements.title.value
-    const body = e.target.elements.body.value
-    createPost(title, body, tags)
+    const title = e.target?.elements.title.value
+    const body = e.target?.elements.body.value
+    createPost(title, body, tags).then((entry: Entry | undefined) => {
+      if (entry) {
+        location.reload()
+      } else {
+        console.log('failed to publish entry')
+      }
+    })
   }
 
   return (

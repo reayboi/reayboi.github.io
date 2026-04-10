@@ -20,7 +20,7 @@ export const Post = ({ title, body, date, tags }: PostProps) => {
         <h4>{title}</h4>
       </div>
       <div className="content">
-        {body}
+        <div className="content-body">{body}</div>
         <Tags tags={tags} />
         <Timestamp date={date} />
       </div>

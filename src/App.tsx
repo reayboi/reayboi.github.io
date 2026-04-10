@@ -9,12 +9,13 @@ import { useFilters } from './state/hooks/use-filters'
 function App() {
   const { filters } = useFilters()
   const { adminAuthenticated } = useAuth()
-
+  const loggedIn =
+    adminAuthenticated || localStorage.getItem('adminLoggedIn') === 'true'
   return (
     <main>
       <Header />
       <div className="content">
-        {adminAuthenticated && <CreatePost />}
+        {loggedIn && <CreatePost />}
         <div className="refine">{filters.length >= 1 && <Filters />}</div>
         <Feed />
       </div>

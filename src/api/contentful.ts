@@ -37,7 +37,7 @@ export const createPost = async (
   tags: Array<string>,
   type: 'text' | 'image' = 'text',
 ) => {
-  managementClient
+  return await managementClient
     .getSpace(import.meta.env.VITE_CONTENTFUL_SPACE_ID)
     .then((space) => space.getEnvironment('master'))
     .then((environment) =>
@@ -78,6 +78,11 @@ export const createPost = async (
         },
       }),
     )
-    .then((entry) => entry.publish())
-    .catch(console.error)
+    .then((entry) => {
+      return entry.publish()
+    })
+    .catch((error) => {
+      console.error('there was an error ahhhhh', error)
+      return undefined
+    })
 }

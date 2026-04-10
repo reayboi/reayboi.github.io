@@ -58,7 +58,7 @@ export const Feed = () => {
           {posts.map((post) =>
             post?.type === 'image' ? (
               <ImagePost
-                key={post.title}
+                key={`${post.title}-${post.date.toLocaleTimeString()}`}
                 title={post.title}
                 body={post.body}
                 date={post.date}
@@ -67,7 +67,7 @@ export const Feed = () => {
               />
             ) : (
               <Post
-                key={post.title}
+                key={`${post.title}-${post.date.toLocaleTimeString()}`}
                 title={post.title}
                 body={post.body}
                 date={post.date}
